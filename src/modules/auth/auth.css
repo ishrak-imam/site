@@ -1,0 +1,29 @@
+.auth-box {
+  padding: 100px 0px 100px 0px;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.tab-list {
+  padding: 0px 100px 0px 10px;
+  border-bottom: 1px solid #aaa;
+  margin: 0px 0px 10px 0px;
+}
+
+@media(max-width: 1200px) {
+  .auth-box-w50p {
+    width:50%;
+  }
+}
+
+@media(max-width: 800px) {
+  .auth-box-w60p {
+    width:60%;
+  }
+}
+
+@media(max-width: 400px) {
+  .auth-box-w90p {
+    width: 90%;
+  }
+}
