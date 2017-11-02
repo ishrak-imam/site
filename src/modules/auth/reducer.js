@@ -1,6 +1,7 @@
 import { createAction, createReducer } from 'redux-act';
 
 const INITIAL_STATE = {
+  checkingLogin: false,
   loading: false,
   user: null,
   login: false,
@@ -26,9 +27,11 @@ export const logoutFailed = createAction('LOGOUT_FAILED');
 
 const auth = createReducer({
 
+  [init]: (state, payload) => ({ ...state, checkingLogin: true }),
+
   [loginRequest]: (state, payload) => ({ ...state, loading: true, loginErr: null }),
-  [loginFailed]: (state, payload) => ({ ...state, loading: false, loginErr: payload }),
-  [loginSuccess]: (state, payload) => ({ ...state, loading: false, user: payload, login: true, loginErr: null }),
+  [loginFailed]: (state, payload) => ({ ...state, loading: false, loginErr: payload, checkingLogin: false }),
+  [loginSuccess]: (state, payload) => ({ ...state, loading: false, user: payload, login: true, loginErr: null, checkingLogin: false }),
 
   [signupRequest]: (state, payload) => ({ ...state, loading: true, signupErr: null }),
   [signupFailed]: (state, payload) => ({ ...state, loading: false, signupErr: payload }),

@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import './signup.css'
 
 
-import SignupForm from '../../shared/authForm/authForm'
+import SignupForm from '../../shared/form/container';
+import { SIGNUP_FORM } from '../../../config/form';
 
 
 import { connect } from 'react-redux';
@@ -27,12 +28,14 @@ class SignUp extends Component {
   }
 
   render() {
+    const { signupErr, loading } = this.props.auth;
     return (
       <div className="signup-box">
         <SignupForm
           onSubmit={this._onSubmint}
-          loading={this.props.loading}
-          submitText="Sign up"
+          loading={loading}
+          err={signupErr}
+          config={SIGNUP_FORM}
         />
       </div>
     )
@@ -41,7 +44,7 @@ class SignUp extends Component {
 
 const stateToProps = (state) => {
   return {
-    loading: state.auth.loading
+    auth: state.auth
   }
 }
 

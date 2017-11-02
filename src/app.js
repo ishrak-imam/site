@@ -7,7 +7,7 @@ import {
   BrowserRouter as Router
 } from 'react-router-dom';
 
-import PrivateRoute from './modules/shared/privateRoute'
+import PrivateRoute from './modules/auth/privateRoute';
 
 import Auth from './modules/auth/auth';
 import Home from './modules/home/home';
@@ -19,7 +19,7 @@ class App extends Component {
 
     return (
       <div>
-        <Router>
+        <Router basename="/site/">
           <Switch>
             <Route exact path="/auth" component={Auth} />
             <PrivateRoute path="/" component={Home} />

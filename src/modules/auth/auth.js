@@ -16,6 +16,9 @@ import Login from './login/login';
 import SignUp from './signup/signup';
 
 
+import InitLoader from '../shared/initialLoader/loader';
+
+
 class Auth extends Component {
 
 
@@ -33,26 +36,28 @@ class Auth extends Component {
 
   render() {
 
-    return (
-      !this.props.login
-        ? (<div className="auth-box auth-box-w50p auth-box-w60p auth-box-w90p">
-          <Tabs>
-            <TabList className="tab-list">
-              <Tab>Login</Tab>
-              <Tab>Sign up</Tab>
-            </TabList>
-            <TabPanel><Login /></TabPanel>
-            <TabPanel><SignUp /></TabPanel>
-          </Tabs>
-        </div>)
-        : (<Redirect to={this.state.referrer} />)
-    )
+    const { login, checkingLogin } = this.props.auth;
+
+    return (checkingLogin)
+      ? (<InitLoader />)
+      : (!login
+          ? (<div className="auth-box auth-box-w50p auth-box-w60p auth-box-w90p">
+            <Tabs>
+              <TabList className="tab-list">
+                <Tab>Login</Tab>
+                <Tab>Sign up</Tab>
+              </TabList>
+              <TabPanel><Login /></TabPanel>
+              <TabPanel><SignUp /></TabPanel>
+            </Tabs>
+          </div>)
+          : (<Redirect to={this.state.referrer} />))
   }
 }
 
 const stateToProps = (state) => {
   return {
-    login: state.auth.login
+    auth: state.auth
   }
 }
 

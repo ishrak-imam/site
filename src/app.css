@@ -6,6 +6,10 @@
   color: red;
 }
 
+.err-clr {
+  color: #9f3a38;
+}
+
 .d-f {
   display: flex;
 }
@@ -16,4 +20,12 @@
 
 .a-i-cntr {
   align-items: center;
+}
+
+.m-t5 {
+  margin-top: 5px;
+}
+
+.m-t10 {
+  margin-top: 10px;
 }

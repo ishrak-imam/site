@@ -3,7 +3,8 @@
 import React, { Component } from 'react';
 import './login.css'
 
-import LoginForm from '../../shared/authForm/authForm'
+import LoginForm from '../../shared/form/container';
+import { LOGIN_FORM } from '../../../config/form';
 
 import { connect } from 'react-redux';
 
@@ -33,7 +34,7 @@ class Login extends Component {
           onSubmit={this._onSubmint}
           loading={loading}
           err={loginErr}
-          submitText="Log in"
+          config={LOGIN_FORM}
         />
       </div>
     )

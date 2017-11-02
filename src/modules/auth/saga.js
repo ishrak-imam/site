@@ -1,5 +1,5 @@
 
-
+// import { delay } from 'redux-saga';
 import { call, takeLatest, put } from 'redux-saga/effects';
 import Client from '../../client';
 
@@ -31,6 +31,7 @@ function* workerInit() {
     const { accessToken } = yield call(Client.authenticate);
     const { userId } = yield call(Client.verifyJWT, accessToken);
     const userData = yield call(Client.getUser, userId);
+    // yield delay(2000);
     yield put(loginSuccess(userData));
   } catch (e) {
     yield put(loginFailed(null));
