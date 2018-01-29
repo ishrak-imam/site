@@ -24,7 +24,6 @@ export const logoutRequest = createAction('LOGOUT_REQUEST');
 export const logoutSuccess = createAction('LOGOUT_SUCCESS');
 export const logoutFailed = createAction('LOGOUT_FAILED');
 
-
 const auth = createReducer({
 
   [init]: (state, payload) => ({ ...state, checkingLogin: true }),
@@ -39,7 +38,7 @@ const auth = createReducer({
 
   [logoutRequest]: (state, payload) => ({ ...state, logoutErr: null }),
   [logoutFailed]: (state, payload) => ({ ...state, logoutErr: payload, login: false, user: null }),
-  [logoutSuccess]: (state, payload) => (INITIAL_STATE),
+  [logoutSuccess]: (state, payload) => (INITIAL_STATE)
 
 }, INITIAL_STATE);
 

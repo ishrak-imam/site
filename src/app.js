@@ -9,27 +9,25 @@ import {
 
 import PrivateRoute from './modules/auth/privateRoute';
 
-import Auth from './modules/auth/auth';
-import Home from './modules/home/home';
-
+import Auth from './modules/auth';
+import Home from './modules/home';
 
 class App extends Component {
-
-  render() {
-
+  render () {
     return (
       <div>
-        <Router basename="/site/">
+        <Router
+          // basename='/site/'
+        >
           <Switch>
-            <Route exact path="/auth" component={Auth} />
-            <PrivateRoute path="/" component={Home} />
-            <Redirect from="*" to="/" />
+            <Route exact path='/auth' component={Auth} />
+            <PrivateRoute path='/' component={Home} />
+            <Redirect from='*' to='/' />
           </Switch>
         </Router>
       </div>
     );
   }
-
 }
 
 export default App;

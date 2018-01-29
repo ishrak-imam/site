@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import App from './app';
 import registerServiceWorker from './registerServiceWorker';
 
-
 import store from './store/index';
 import { Provider } from 'react-redux';
 
@@ -15,12 +14,11 @@ const render = Component => {
       <Component />
     </Provider>,
     // </AppContainer>,
-    document.getElementById('root'),
-  )
-}
+    document.getElementById('root')
+  );
+};
 
-render(App)
-
+render(App);
 
 // // Webpack Hot Module Replacement API
 // if (module.hot) {

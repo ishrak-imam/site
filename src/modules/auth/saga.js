@@ -21,12 +21,11 @@ import {
 
 } from './reducer';
 
-
-export function* watchInit() {
+export function * watchInit () {
   yield takeLatest(init.getType(), workerInit);
-};
+}
 
-function* workerInit() {
+function * workerInit () {
   try {
     const { accessToken } = yield call(Client.authenticate);
     const { userId } = yield call(Client.verifyJWT, accessToken);
@@ -36,14 +35,13 @@ function* workerInit() {
   } catch (e) {
     yield put(loginFailed(null));
   }
-};
+}
 
-
-export function* watchLogin() {
+export function * watchLogin () {
   yield takeLatest(loginRequest.getType(), workerLogin);
-};
+}
 
-function* workerLogin(action) {
+function * workerLogin (action) {
   try {
     const { accessToken } = yield call(Client.authenticate, action.payload);
     const { userId } = yield call(Client.verifyJWT, accessToken);
@@ -52,14 +50,13 @@ function* workerLogin(action) {
   } catch (e) {
     yield put(loginFailed(e));
   }
-};
+}
 
+export function * watchSignup () {
+  yield takeLatest(signupRequest.getType(), workerSignup);
+}
 
-export function* watchSignup() {
-  yield takeLatest(signupRequest.getType(), workerSignup)
-};
-
-function* workerSignup(action) {
+function * workerSignup (action) {
   try {
     action.payload.strategy = 'local';
     const user = yield call(Client.createUser, action.payload);
@@ -68,19 +65,17 @@ function* workerSignup(action) {
   } catch (e) {
     yield put(signupFailed(e));
   }
-};
+}
 
-
-export function* watchLogout() {
+export function * watchLogout () {
   yield takeLatest(logoutRequest.getType(), workerLogout);
-};
+}
 
-
-function* workerLogout() {
+function * workerLogout () {
   try {
     yield call(Client.logout);
     yield put(logoutSuccess());
   } catch (e) {
     yield put(logoutFailed(e));
   }
-};
+}

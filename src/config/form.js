@@ -1,5 +1,4 @@
 
-
 export const LOGIN_FORM = {
   name: 'login',
   submitText: 'Log in',
@@ -16,19 +15,18 @@ export const LOGIN_FORM = {
     }
   ],
   validate: (values) => {
-    const errors = {}
+    const errors = {};
     if (!values.email) {
-      errors.email = 'Enter email'
+      errors.email = 'Enter email';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      errors.email = 'Enter a valid email'
+      errors.email = 'Enter a valid email';
     }
     if (!values.password) {
-      errors.password = 'Enter password'
+      errors.password = 'Enter password';
     }
-    return errors
+    return errors;
   }
-}
-
+};
 
 export const SIGNUP_FORM = {
   name: 'signup',
@@ -46,15 +44,16 @@ export const SIGNUP_FORM = {
     }
   ],
   validate: (values) => {
-    const errors = {}
+    const errors = {};
     if (!values.email) {
-      errors.email = 'Enter email'
+      errors.email = 'Enter email';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      errors.email = 'Enter a valid email'
+      errors.email = 'Enter a valid email';
     }
     if (!values.password) {
-      errors.password = 'Enter password'
+      errors.password = 'Enter password';
     }
-    return errors
+    return errors;
   }
 }
+;

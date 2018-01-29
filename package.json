@@ -58,7 +58,7 @@
   "devDependencies": {
     "react-hot-loader": "^3.1.0"
   },
-  "homepage": "http://localhost:8080/site/",
+  "homepage": "http://localhost:8080",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
