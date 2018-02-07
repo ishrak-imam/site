@@ -8,8 +8,8 @@ import { LOGIN_FORM } from '../../../config/form';
 import { connect } from 'react-redux';
 
 import {
-  loginRequest
-} from '../reducer';
+  loginReq
+} from '../actions';
 
 class Login extends Component {
   constructor (props) {
@@ -19,17 +19,17 @@ class Login extends Component {
 
   _onSubmint (obj) {
     obj.strategy = 'local';
-    this.props.dispatch(loginRequest(obj));
+    this.props.dispatch(loginReq(obj));
   }
 
   render () {
-    const { loginErr, loading } = this.props.auth;
+    const { error, loading } = this.props.login;
     return (
       <div className='login-box'>
         <LoginForm
           onSubmit={this._onSubmint}
           loading={loading}
-          err={loginErr}
+          err={error}
           config={LOGIN_FORM}
         />
       </div>
@@ -37,10 +37,6 @@ class Login extends Component {
   }
 }
 
-const stateToProps = (state) => {
-  return {
-    auth: state.auth
-  };
-};
+const stateToProps = ({auth: {login}}) => ({login});
 
 export default connect(stateToProps, dispatch => ({ dispatch }))(Login);

@@ -8,8 +8,8 @@ import { SIGNUP_FORM } from '../../../config/form';
 import { connect } from 'react-redux';
 
 import {
-  signupRequest
-} from '../reducer';
+  signUpReq
+} from '../actions';
 
 class SignUp extends Component {
   constructor (props) {
@@ -18,17 +18,17 @@ class SignUp extends Component {
   }
 
   _onSubmint (obj) {
-    this.props.dispatch(signupRequest(obj));
+    this.props.dispatch(signUpReq(obj));
   }
 
   render () {
-    const { signupErr, loading } = this.props.auth;
+    const { error, loading } = this.props.signUp;
     return (
       <div className='signup-box'>
         <SignupForm
           onSubmit={this._onSubmint}
           loading={loading}
-          err={signupErr}
+          err={error}
           config={SIGNUP_FORM}
         />
       </div>
@@ -36,10 +36,6 @@ class SignUp extends Component {
   }
 }
 
-const stateToProps = (state) => {
-  return {
-    auth: state.auth
-  };
-};
+const stateToProps = ({auth: {signUp}}) => ({signUp});
 
 export default connect(stateToProps, dispatch => ({ dispatch }))(SignUp);

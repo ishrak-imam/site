@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import AppTitle from '../appTitle';
 
 import {
-  logoutRequest
-} from '../../auth/reducer';
+  logOutReq
+} from '../../auth/actions';
 
 class Header extends Component {
   constructor (props) {
@@ -16,7 +16,7 @@ class Header extends Component {
   }
 
   _logout () {
-    this.props.dispatch(logoutRequest());
+    this.props.dispatch(logOutReq());
   }
 
   render () {

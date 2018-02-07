@@ -4,25 +4,18 @@ import { call, takeLatest, put } from 'redux-saga/effects';
 import Client from '../../client';
 
 import {
+  INIT,
+  LOGIN_REQ,
+  SIGN_UP_REQ,
+  LOGOUT_REQ,
 
-  init,
-
-  loginRequest,
-  loginSuccess,
-  loginFailed,
-
-  signupRequest,
-  signupSuccess,
-  signupFailed,
-
-  logoutRequest,
-  logoutSuccess,
-  logoutFailed
-
-} from './reducer';
+  loginReq, loginSucs, loginFail,
+  signUpFail, signUpSucs,
+  logOutSucs, logOutFail
+} from './actions';
 
 export function * watchInit () {
-  yield takeLatest(init.getType(), workerInit);
+  yield takeLatest(INIT, workerInit);
 }
 
 function * workerInit () {
@@ -31,14 +24,14 @@ function * workerInit () {
     const { userId } = yield call(Client.verifyJWT, accessToken);
     const userData = yield call(Client.getUser, userId);
     // yield delay(2000);
-    yield put(loginSuccess(userData));
+    yield put(loginSucs(userData));
   } catch (e) {
-    yield put(loginFailed(null));
+    yield put(loginFail(null));
   }
 }
 
 export function * watchLogin () {
-  yield takeLatest(loginRequest.getType(), workerLogin);
+  yield takeLatest(LOGIN_REQ, workerLogin);
 }
 
 function * workerLogin (action) {
@@ -46,36 +39,36 @@ function * workerLogin (action) {
     const { accessToken } = yield call(Client.authenticate, action.payload);
     const { userId } = yield call(Client.verifyJWT, accessToken);
     const userData = yield call(Client.getUser, userId);
-    yield put(loginSuccess(userData));
+    yield put(loginSucs(userData));
   } catch (e) {
-    yield put(loginFailed(e));
+    yield put(loginFail(e));
   }
 }
 
 export function * watchSignup () {
-  yield takeLatest(signupRequest.getType(), workerSignup);
+  yield takeLatest(SIGN_UP_REQ, workerSignup);
 }
 
 function * workerSignup (action) {
   try {
     action.payload.strategy = 'local';
     const user = yield call(Client.createUser, action.payload);
-    yield put(signupSuccess(user));
-    yield put(loginRequest(action.payload));
+    yield put(signUpSucs(user));
+    yield put(loginReq(action.payload));
   } catch (e) {
-    yield put(signupFailed(e));
+    yield put(signUpFail(e));
   }
 }
 
 export function * watchLogout () {
-  yield takeLatest(logoutRequest.getType(), workerLogout);
+  yield takeLatest(LOGOUT_REQ, workerLogout);
 }
 
 function * workerLogout () {
   try {
     yield call(Client.logout);
-    yield put(logoutSuccess());
+    yield put(logOutSucs());
   } catch (e) {
-    yield put(logoutFailed(e));
+    yield put(logOutFail(e));
   }
 }

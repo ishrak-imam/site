@@ -9,7 +9,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import {
   init
-} from './reducer';
+} from './actions';
 
 import Login from './login';
 import SignUp from './signup';
@@ -29,11 +29,11 @@ class Auth extends Component {
   }
 
   render () {
-    const { login, checkingLogin } = this.props.auth;
+    const { user, checking } = this.props.login;
 
-    return (checkingLogin)
+    return (checking)
       ? (<InitLoader />)
-      : (!login
+      : (!user
         ? (<div className='auth-box auth-box-w50p auth-box-w60p auth-box-w90p'>
           <Tabs>
             <TabList className='tab-list'>
@@ -48,10 +48,6 @@ class Auth extends Component {
   }
 }
 
-const stateToProps = (state) => {
-  return {
-    auth: state.auth
-  };
-};
+const stateToProps = ({auth: {login}}) => ({login});
 
 export default connect(stateToProps, dispatch => ({ dispatch }))(Auth);
