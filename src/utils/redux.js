@@ -1,10 +1,20 @@
 
-export function createReducer (initialState, handlers) {
-  return function reducer (state = initialState, action) {
+export const createReducer = (initialState, handlers) => {
+  const reducer = (state = initialState, action) => {
     if (handlers.hasOwnProperty(action.type)) {
       return handlers[action.type](state, action.payload);
     } else {
       return state;
     }
   };
-}
+  return reducer;
+};
+
+export const createAction = type => {
+  const action = payload => ({
+    type,
+    payload
+  });
+  action.getType = () => type;
+  return action;
+};

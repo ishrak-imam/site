@@ -4,18 +4,14 @@ import { call, takeLatest, put } from 'redux-saga/effects';
 import Client from '../../client';
 
 import {
-  INIT,
-  LOGIN_REQ,
-  SIGN_UP_REQ,
-  LOGOUT_REQ,
-
+  init,
   loginReq, loginSucs, loginFail,
-  signUpFail, signUpSucs,
-  logOutSucs, logOutFail
+  signUpReq, signUpFail, signUpSucs,
+  logOutReq, logOutSucs, logOutFail
 } from './action';
 
 export function * watchInit () {
-  yield takeLatest(INIT, workerInit);
+  yield takeLatest(init.getType(), workerInit);
 }
 
 function * workerInit () {
@@ -31,7 +27,7 @@ function * workerInit () {
 }
 
 export function * watchLogin () {
-  yield takeLatest(LOGIN_REQ, workerLogin);
+  yield takeLatest(loginReq.getType(), workerLogin);
 }
 
 function * workerLogin (action) {
@@ -46,7 +42,7 @@ function * workerLogin (action) {
 }
 
 export function * watchSignup () {
-  yield takeLatest(SIGN_UP_REQ, workerSignup);
+  yield takeLatest(signUpReq.getType(), workerSignup);
 }
 
 function * workerSignup (action) {
@@ -61,7 +57,7 @@ function * workerSignup (action) {
 }
 
 export function * watchLogout () {
-  yield takeLatest(LOGOUT_REQ, workerLogout);
+  yield takeLatest(logOutReq.getType(), workerLogout);
 }
 
 function * workerLogout () {
