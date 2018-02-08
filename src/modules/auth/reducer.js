@@ -7,6 +7,8 @@ import {
 
 } from './action';
 
+import {createReducer} from '../../utils/redux';
+
 const LOGIN = {
   checking: false,
   loading: false,
@@ -18,16 +20,6 @@ const SIGN_UP = {
   loading: false,
   error: null
 };
-
-function createReducer (initialState, handlers) {
-  return function reducer (state = initialState, action) {
-    if (handlers.hasOwnProperty(action.type)) {
-      return handlers[action.type](state, action.payload);
-    } else {
-      return state;
-    }
-  };
-}
 
 export const login = createReducer(LOGIN, {
   [INIT]: (state, payload) => ({...state, checking: true}),
