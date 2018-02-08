@@ -20,7 +20,7 @@ class Auth extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      referrer: this.props.location.state.referrer
+      referrer: this.props.location.state ? this.props.location.state.referrer : '/'
     };
   }
 
