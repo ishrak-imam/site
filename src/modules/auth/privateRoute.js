@@ -14,6 +14,6 @@ const PrivateRoute = ({ component: Component, login: {user} }) => (
   />
 );
 
-const stateToProps = ({auth: {login}}) => ({login});
+const stateToProps = ({login}) => ({login});
 
 export default connect(stateToProps)(PrivateRoute);

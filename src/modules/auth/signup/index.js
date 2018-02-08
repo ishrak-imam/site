@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 
 import {
   signUpReq
-} from '../actions';
+} from '../action';
 
 class SignUp extends Component {
   constructor (props) {
@@ -36,6 +36,6 @@ class SignUp extends Component {
   }
 }
 
-const stateToProps = ({auth: {signUp}}) => ({signUp});
+const stateToProps = ({signUp}) => ({signUp});
 
 export default connect(stateToProps, dispatch => ({ dispatch }))(SignUp);

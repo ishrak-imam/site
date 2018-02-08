@@ -7,7 +7,7 @@ import AppTitle from '../appTitle';
 
 import {
   logOutReq
-} from '../../auth/actions';
+} from '../../auth/action';
 
 class Header extends Component {
   constructor (props) {

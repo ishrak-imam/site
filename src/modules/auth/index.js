@@ -9,7 +9,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import {
   init
-} from './actions';
+} from './action';
 
 import Login from './login';
 import SignUp from './signup';
@@ -48,6 +48,6 @@ class Auth extends Component {
   }
 }
 
-const stateToProps = ({auth: {login}}) => ({login});
+const stateToProps = ({login}) => ({login});
 
 export default connect(stateToProps, dispatch => ({ dispatch }))(Auth);

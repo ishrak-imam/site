@@ -5,9 +5,7 @@ import {
   SIGN_UP_REQ, SIGN_UP_SUCS, SIGN_UP_FAIL,
   LOGOUT_SUCS, LOGOUT_FAIL
 
-} from './actions';
-
-import { combineReducers } from 'redux';
+} from './action';
 
 const LOGIN = {
   checking: false,
@@ -31,7 +29,7 @@ function createReducer (initialState, handlers) {
   };
 }
 
-const login = createReducer(LOGIN, {
+export const login = createReducer(LOGIN, {
   [INIT]: (state, payload) => ({...state, checking: true}),
   [LOGIN_REQ]: (state, payload) => ({...state, loading: true, error: null}),
   [LOGIN_SUCS]: (state, payload) => ({...state, loading: false, checking: false, user: payload}),
@@ -41,15 +39,8 @@ const login = createReducer(LOGIN, {
   [LOGOUT_FAIL]: (state, payload) => (LOGIN)
 });
 
-const signUp = createReducer(SIGN_UP, {
+export const signUp = createReducer(SIGN_UP, {
   [SIGN_UP_REQ]: (state, payload) => ({...state, loading: true, error: null}),
   [SIGN_UP_SUCS]: (state, payload) => ({...state, loading: false}),
   [SIGN_UP_FAIL]: (state, payload) => ({...state, loading: false, error: payload})
 });
-
-const auth = combineReducers({
-  login,
-  signUp
-});
-
-export default auth;

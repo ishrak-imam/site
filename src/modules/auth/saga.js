@@ -12,7 +12,7 @@ import {
   loginReq, loginSucs, loginFail,
   signUpFail, signUpSucs,
   logOutSucs, logOutFail
-} from './actions';
+} from './action';
 
 export function * watchInit () {
   yield takeLatest(INIT, workerInit);
