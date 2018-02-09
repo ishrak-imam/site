@@ -43,7 +43,7 @@ class Form extends Component {
   }
 
   render () {
-    const { submitting, handleSubmit, loading, config, err } = this.props;
+    const { handleSubmit, loading, config, err } = this.props;
     return (
       <div>
         <form className='ui form'>
@@ -53,7 +53,7 @@ class Form extends Component {
           <div className='d-f j-c-sp-btwn a-i-cntr'>
             <button
               onClick={handleSubmit(this._handleSubmit)}
-              disabled={submitting}
+              disabled={loading}
               type='submit'
               className={`ui button secondary ${loading ? 'loading' : ''}`}
             >{config.submitText}</button>
