@@ -1,6 +1,7 @@
 
 // import { delay } from 'redux-saga';
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
+import {takeFirst} from '../../utils/custom-saga-helpers';
 import Client from '../../client';
 
 import {
@@ -11,7 +12,7 @@ import {
 } from './action';
 
 export function * watchInit () {
-  yield takeLatest(init.getType(), workerInit);
+  yield takeFirst(init.getType(), workerInit);
 }
 
 function * workerInit () {
@@ -27,7 +28,7 @@ function * workerInit () {
 }
 
 export function * watchLogin () {
-  yield takeLatest(loginReq.getType(), workerLogin);
+  yield takeFirst(loginReq.getType(), workerLogin);
 }
 
 function * workerLogin (action) {
@@ -42,7 +43,7 @@ function * workerLogin (action) {
 }
 
 export function * watchSignup () {
-  yield takeLatest(signUpReq.getType(), workerSignup);
+  yield takeFirst(signUpReq.getType(), workerSignup);
 }
 
 function * workerSignup (action) {
@@ -57,7 +58,7 @@ function * workerSignup (action) {
 }
 
 export function * watchLogout () {
-  yield takeLatest(logOutReq.getType(), workerLogout);
+  yield takeFirst(logOutReq.getType(), workerLogout);
 }
 
 function * workerLogout () {

@@ -1,5 +1,5 @@
 
-import {createAction} from '../../utils/redux';
+import {createAction} from '../../utils/custom-redux-helpers';
 
 export const INIT = 'INIT';
 export const LOGIN_REQ = 'LOGIN_REQ';
