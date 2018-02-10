@@ -13,6 +13,7 @@ const appReducer = combineReducers({
   ...authReducers
 });
 
+// state clean-up on log out.
 const rootReducer = (state, action) => {
   if (action.type === LOGOUT_SUCS || action.type === LOGOUT_FAIL) {
     state = undefined;

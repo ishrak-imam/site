@@ -18,3 +18,7 @@ export const createAction = type => {
   action.getType = () => type;
   return action;
 };
+
+export const updateObject = (oldObject, newValues) => {
+  return {...oldObject, ...newValues};
+};
