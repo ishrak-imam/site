@@ -11,15 +11,19 @@ import {
   loginReq
 } from '../action';
 
+import {bindFunctions} from '../../../utils';
+
 import {getLogin} from '../stateAccess';
 
 class Login extends Component {
   constructor (props) {
     super(props);
-    this._onSubmint = this._onSubmint.bind(this);
+    bindFunctions.call(this, [
+      '_onSubmit'
+    ]);
   }
 
-  _onSubmint (obj) {
+  _onSubmit (obj) {
     obj.strategy = 'local';
     this.props.dispatch(loginReq(obj));
   }
@@ -29,7 +33,7 @@ class Login extends Component {
     return (
       <div className='login-box'>
         <LoginForm
-          onSubmit={this._onSubmint}
+          onSubmit={this._onSubmit}
           loading={loading}
           err={error}
           config={LOGIN_FORM}

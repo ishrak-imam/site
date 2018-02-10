@@ -11,15 +11,19 @@ import {
   signUpReq
 } from '../action';
 
+import {bindFunctions} from '../../../utils';
+
 import {getSignUp} from '../stateAccess';
 
 class SignUp extends Component {
   constructor (props) {
     super(props);
-    this._onSubmint = this._onSubmint.bind(this);
+    bindFunctions.call(this, [
+      '_onSubmit'
+    ]);
   }
 
-  _onSubmint (obj) {
+  _onSubmit (obj) {
     this.props.dispatch(signUpReq(obj));
   }
 
@@ -28,7 +32,7 @@ class SignUp extends Component {
     return (
       <div className='signup-box'>
         <SignupForm
-          onSubmit={this._onSubmint}
+          onSubmit={this._onSubmit}
           loading={loading}
           err={error}
           config={SIGNUP_FORM}

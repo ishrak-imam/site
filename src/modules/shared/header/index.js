@@ -5,6 +5,8 @@ import './header.css';
 import { connect } from 'react-redux';
 import AppTitle from '../appTitle';
 
+import {bindFunctions} from '../../../utils';
+
 import {
   logOutReq
 } from '../../auth/action';
@@ -12,7 +14,9 @@ import {
 class Header extends Component {
   constructor (props) {
     super(props);
-    this._logout = this._logout.bind(this);
+    bindFunctions.call(this, [
+      '_logout'
+    ]);
   }
 
   _logout () {
