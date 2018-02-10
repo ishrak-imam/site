@@ -10,10 +10,10 @@ class Container extends Component {
   }
 }
 
-function mapStateToProps (state, props) {
+function stateToProps (state, props) {
   return {
     form: props.config.name
   };
 }
 
-export default connect(mapStateToProps)(Container);
+export default connect(stateToProps)(Container);

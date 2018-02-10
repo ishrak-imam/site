@@ -11,6 +11,8 @@ import {
   signUpReq
 } from '../action';
 
+import {getSignUp} from '../stateAccess';
+
 class SignUp extends Component {
   constructor (props) {
     super(props);
@@ -36,6 +38,6 @@ class SignUp extends Component {
   }
 }
 
-const stateToProps = ({signUp}) => ({signUp});
+const stateToProps = (state) => ({signUp: getSignUp(state)});
 
 export default connect(stateToProps, dispatch => ({ dispatch }))(SignUp);

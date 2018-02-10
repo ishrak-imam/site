@@ -4,6 +4,8 @@ import { Route, Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
+import {getLogin} from './stateAccess';
+
 const PrivateRoute = ({ component: Component, login: {user} }) => (
   <Route
     render={props => (
@@ -14,6 +16,6 @@ const PrivateRoute = ({ component: Component, login: {user} }) => (
   />
 );
 
-const stateToProps = ({login}) => ({login});
+const stateToProps = (state) => ({login: getLogin(state)});
 
 export default connect(stateToProps)(PrivateRoute);

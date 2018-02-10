@@ -16,6 +16,8 @@ import SignUp from './signup';
 
 import InitLoader from '../shared/initialLoader';
 
+import {getLogin} from './stateAccess';
+
 class Auth extends Component {
   constructor (props) {
     super(props);
@@ -48,6 +50,6 @@ class Auth extends Component {
   }
 }
 
-const stateToProps = ({login}) => ({login});
+const stateToProps = (state) => ({login: getLogin(state)});
 
 export default connect(stateToProps, dispatch => ({ dispatch }))(Auth);
