@@ -5,7 +5,7 @@ import {
   SIGN_UP_REQ, SIGN_UP_SUCS, SIGN_UP_FAIL
 } from './action';
 
-import {createReducer, updateObject} from '../../utils/custom-redux-helpers';
+import {createReducer, updateObject} from '../../utils/reduxHelpers';
 
 const LOGIN = {
   checking: false,

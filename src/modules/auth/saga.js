@@ -1,7 +1,7 @@
 
 // import { delay } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
-import {takeFirst} from '../../utils/custom-saga-helpers';
+import {takeFirst} from '../../utils/sagaHelpers';
 import Client from '../../client';
 
 import {
