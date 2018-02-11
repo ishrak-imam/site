@@ -16,7 +16,7 @@ import SignUp from './signup';
 
 import InitLoader from '../shared/initialLoader';
 
-import {getLogin} from './stateAccess';
+import {getLogin} from './store';
 
 class Auth extends Component {
   constructor (props) {

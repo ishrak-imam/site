@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
-import {getLogin} from './stateAccess';
+import {getLogin} from './store';
 
 const PrivateRoute = ({ component: Component, login: {user} }) => (
   <Route

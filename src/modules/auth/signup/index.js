@@ -13,7 +13,7 @@ import {
 
 import {bindFunctions} from '../../../utils';
 
-import {getSignUp} from '../stateAccess';
+import {getSignUp} from '../store';
 
 class SignUp extends Component {
   constructor (props) {

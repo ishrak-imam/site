@@ -13,7 +13,7 @@ import {
 
 import {bindFunctions} from '../../../utils';
 
-import {getLogin} from '../stateAccess';
+import {getLogin} from '../store';
 
 class Login extends Component {
   constructor (props) {
