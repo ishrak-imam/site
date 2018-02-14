@@ -42,6 +42,6 @@ class SignUp extends Component {
   }
 }
 
-const stateToProps = (state) => ({signUp: getSignUp(state)});
+const stateToProps = state => ({signUp: getSignUp(state)});
 
 export default connect(stateToProps, dispatch => ({ dispatch }))(SignUp);
