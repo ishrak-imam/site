@@ -29,13 +29,16 @@ class Login extends Component {
   }
 
   render () {
-    const { error, loading } = this.props.login;
+    const {
+      // error,
+      loading
+    } = this.props.login;
     return (
       <div className='login-box'>
         <LoginForm
           onSubmit={this._onSubmit}
           loading={loading}
-          err={error}
+          // err={error}
           config={LOGIN_FORM}
         />
       </div>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import './app.css';
 
+import { ToastContainer } from 'react-toastify';
+
 import {
   Switch, Route, Redirect,
   BrowserRouter as Router
@@ -25,6 +27,7 @@ class App extends Component {
             <Redirect from='*' to='/' />
           </Switch>
         </Router>
+        <ToastContainer />
       </div>
     );
   }

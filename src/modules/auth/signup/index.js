@@ -28,13 +28,16 @@ class SignUp extends Component {
   }
 
   render () {
-    const { error, loading } = this.props.signUp;
+    const {
+      // error,
+      loading
+    } = this.props.signUp;
     return (
       <div className='signup-box'>
         <SignupForm
           onSubmit={this._onSubmit}
           loading={loading}
-          err={error}
+          // err={error}
           config={SIGNUP_FORM}
         />
       </div>

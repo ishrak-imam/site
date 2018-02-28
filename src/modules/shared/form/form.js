@@ -43,13 +43,14 @@ class Form extends Component {
   }
 
   render () {
-    const { handleSubmit, loading, config, err } = this.props;
+    const {
+      handleSubmit, loading, config
+      // err
+    } = this.props;
     return (
       <div>
         <form className='ui form'>
-
           {this._renderInputs()}
-
           <div className='d-f j-c-sp-btwn a-i-cntr'>
             <button
               onClick={handleSubmit(this._handleSubmit)}
@@ -57,9 +58,8 @@ class Form extends Component {
               type='submit'
               className={`ui button secondary ${loading ? 'loading' : ''}`}
             >{config.submitText}</button>
-            {err ? (<span className='f-r c-r'>{err.message}</span>) : null}
+            {/* {err ? (<span className='f-r c-r'>{err.message}</span>) : null} */}
           </div>
-
         </form>
       </div>
     );

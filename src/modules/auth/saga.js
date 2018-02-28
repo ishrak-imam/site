@@ -1,5 +1,4 @@
 
-// import { delay } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 import {takeFirst} from '../../utils/sagaHelpers';
 import Client from '../../client';
@@ -11,6 +10,10 @@ import {
   logOutReq, logOutSucs, logOutFail
 } from './action';
 
+import {
+  toastErr
+} from '../shared/toast/action';
+
 export function * watchInit () {
   yield takeFirst(init.getType(), workerInit);
 }
@@ -20,10 +23,9 @@ function * workerInit () {
     const { accessToken } = yield call(Client.authenticate);
     const { userId } = yield call(Client.verifyJWT, accessToken);
     const userData = yield call(Client.getUser, userId);
-    // yield delay(2000);
     yield put(loginSucs(userData));
   } catch (e) {
-    yield put(loginFail(null));
+    yield put(loginFail(e));
   }
 }
 
@@ -39,6 +41,7 @@ function * workerLogin (action) {
     yield put(loginSucs(userData));
   } catch (e) {
     yield put(loginFail(e));
+    yield put(toastErr({text: e.message}));
   }
 }
 
@@ -54,6 +57,7 @@ function * workerSignup (action) {
     yield put(loginReq(action.payload));
   } catch (e) {
     yield put(signUpFail(e));
+    yield put(toastErr({text: e.message}));
   }
 }
 
