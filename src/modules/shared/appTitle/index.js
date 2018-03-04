@@ -1,6 +1,8 @@
 import React from 'react';
 import './appTitle.css';
 
-const AppTitle = () => (<h3 className='app-title'>Home</h3>);
+const AppTitle = ({user: {firstName, lastName}}) => (
+  <h4 className='app-title'>Hi, {`${firstName} ${lastName}`}</h4>
+);
 
 export default AppTitle;
